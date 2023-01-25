@@ -24,7 +24,7 @@ public class TestController {
     }
 
 
-    @PostMapping(value = "/addUser?name=")
+    @PostMapping(value = "/addUser")
     public ResponseEntity<?> createUser (@RequestParam("name") String name) throws SQLException {
         if (connection.isPresent()) {
             stmt = connection.get().createStatement();
