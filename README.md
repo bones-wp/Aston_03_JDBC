@@ -5,7 +5,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/bones-wp/Aston_03_JDBC)
 
 ## Функциональность согласно задания:
-### точка входа: /addUserName={name};
+### точка входа: /addUserName;
 ### первоначальный скрипт добавления таблицы в БД в schema.sql
 ### дамп БД приложен в db.dump
 
