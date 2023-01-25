@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Connection;
@@ -23,17 +24,18 @@ public class TestController {
     }
 
 
-    @PostMapping(value = "/addUserName={name}")
-    public ResponseEntity<?> createUser (@PathVariable(name = "name") String name) throws SQLException {
-       if (connection.isPresent()) {
-           stmt = connection.get().createStatement();
-       }
+    @PostMapping(value = "/addUser?name=")
+    public ResponseEntity<?> createUser (@RequestParam("name") String name) throws SQLException {
+        if (connection.isPresent()) {
+            stmt = connection.get().createStatement();
+        }
 
-       String psql = "INSERT INTO USERS (name) VALUES ('" + name + "')";
-       stmt.executeUpdate(psql);
+        String psql = "INSERT INTO USERS (name) VALUES ('" + name + "')";
+        stmt.executeUpdate(psql);
 
-       return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
 
 }
+
