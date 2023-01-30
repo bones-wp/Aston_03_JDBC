@@ -1,27 +1,25 @@
 package com.example.aston_03_jdbc.entity;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Entity
+@Table(name = "USERS")
+@Data
+@AllArgsConstructor
 public class User {
-    private Integer id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
 
-    public User(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    public User() {
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public User(String name) {
         this.name = name;
     }
 }

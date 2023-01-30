@@ -9,17 +9,22 @@ public class JdbcConnection {
 
     private static Optional<Connection> connection = Optional.empty();
 
+
     public static Optional<Connection> getConnection() {
         if (connection.isEmpty()) {
+            String driver = "org.postgresql.Driver";
             String url = "jdbc:postgresql://localhost:5432/postgres";
             String user = "postgres";
             String password = "root";
 
             try {
+                Class.forName(driver);
                 connection = Optional.ofNullable(
                         DriverManager.getConnection(url, user, password));
             } catch (SQLException ex) {
-                 ex.printStackTrace();
+                ex.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
         }
 
