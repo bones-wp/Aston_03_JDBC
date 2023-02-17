@@ -2,6 +2,7 @@ package com.example.aston_03_jdbc.controllers;
 
 import com.example.aston_03_jdbc.config.JdbcConnection;
 import com.example.aston_03_jdbc.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ public class TestController {
     private final Optional<Connection> connection;
     private Statement stmt;
 
+    @Autowired
     public TestController(Optional<Connection> connection) {
         this.connection = JdbcConnection.getConnection();
     }
